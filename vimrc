@@ -81,8 +81,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Set the author name
-let g:snips_author = "Alexander Alzate < alexander dot hospitec at hotmail dot com >"
-let g:snips_copy = "© 2015 Hospitec S.I S.A.S"
+let g:snips_author = $AUTHOR
+let g:snips_copy = $COPY
 
 " PDV 2 (PDV - PHP Documentor for VIM - 2)
 "-----------------------------------------
