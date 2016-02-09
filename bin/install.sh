@@ -1,6 +1,9 @@
 #!/usr/bin/bash
 
+# FIXME: CWD dependency MUST be fixed.
 # Copy Vimrc to home directory
-cp {../,~/.}vimrc
+cp {,~/.}vimrc
 # Copy Gvimrc to home directory
-cp {../,~/.}gvimrc
+cp {,~/.}gvimrc
+
+vim +BundleClean +BundleInstall! +q
