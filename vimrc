@@ -122,8 +122,8 @@ autocmd BufReadPost *
 \   exe "normal g`\"" |
 \ endif
 
-" Indent lvl
-set list lcs=tab:¦›
+" indentation
+set list lcs=tab:\¦˲
 
 syntax on
 set number
