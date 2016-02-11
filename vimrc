@@ -13,12 +13,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Vundle Plugins
+"Plugin 'Firef0x/matchit'
 Plugin '2072/PHP-Indenting-for-VIm'
 Plugin '2072/vim-syntax-for-PHP'
-Plugin 'Firef0x/matchit'
 Plugin 'HTML-AutoCloseTag'
-"Plugin 'alexander-alzate/PIV'
 Plugin 'alexander-alzate/vawa.vim'
+Plugin 'alexander-alzate/vim-color-hour'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'genutils'
@@ -40,7 +40,6 @@ Plugin 'ultisnips'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
-Plugin 'matchit.zip'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -142,26 +141,4 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 " Refresh without higlights
 imap <C-L> <ESC>:noh<CR>a
 map <C-L> :noh<CR>
-
-" Set color scheme according to current time of day.
-" SEE: http://vim.wikia.com/wiki/Switch_color_schemes
-function! HourColor()
-	let hr = str2nr(strftime('%H'))
-	if hr <= 3
-		let i = 0
-	elseif hr <= 7
-		let i = 1
-	elseif hr <= 14
-		let i = 2
-	elseif hr <= 18
-		let i = 3
-	else
-		let i = 4
-	endif
-	let nowcolors = 'xoria256 jellybeans twilight two2tango wombat'
-	execute 'colorscheme '.split(nowcolors)[i]
-	redraw
-endfunction
-
-call HourColor()
 
