@@ -6,4 +6,4 @@ cp {,~/.}vimrc
 # Copy Gvimrc to home directory
 cp {,~/.}gvimrc
 
-vim +BundleClean +BundleInstall! +q
+vim +BundleClean +BundleInstall! +qall

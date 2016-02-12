@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin '2072/PHP-Indenting-for-VIm'
 Plugin '2072/vim-syntax-for-PHP'
 Plugin 'HTML-AutoCloseTag'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'alexander-alzate/vawa.vim'
 Plugin 'alexander-alzate/vim-color-hour'
 Plugin 'bronson/vim-trailing-whitespace'
@@ -31,6 +32,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'othree/html5.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'sniphpets/sniphpets'
+Plugin 'sniphpets/sniphpets-common'
 Plugin 'tobyS/pdv'
 Plugin 'tobyS/vmustache'
 Plugin 'tomtom/checksyntax_vim'
@@ -73,6 +76,9 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 
 "Sort according to their orther in the source file
 let g:tagbar_sort = 0
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+let g:tagbar_foldlevel = 2
 
 " Show line numbers in the Tagbar windows
 " let g:tagbar_show_linenumbers = 2
@@ -82,9 +88,13 @@ let g:tagbar_sort = 0
 map <F12> :NERDTreeToggle<CR>
 
 " Closes NERDTree whether it is the left open window
-autocmd bufenter *
-		\ if (winnr("$") == 1 && exists("b:NERDTreeType") &&
-		\ b:NERDTreeType == "primary") | q | endif
+autocmd BufEnter,BufWinEnter *
+			\ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+				\ | q
+			\ | endif
+"autocmd bufenter *
+"		\ if (winnr("$") == 1 && exists("b:NERDTreew") &&
+"		\ b:NERDTree.isTabFree()) | q | endif
 
 let NERDTreeChDirMode = 2
 let NERDTreeShowBookmarks = 1
@@ -103,7 +113,9 @@ imap <unique> <silent> <F3> <C-O><Plug>LookupFile
 
 " Tabular
 " -------
-vmap <unique> <silent> <F8> :Tabularize /=<CR>
+" For PHP array assignment and regular assignment.
+" NOTE: tabular comes with a default tabular pattern for 'assignment'
+vmap <unique> <silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
 
 " Session
 " -------
