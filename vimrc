@@ -145,6 +145,8 @@ set noexpandtab
 set hls
 set textwidth=80
 set fo+=orj
+set hid
+
 let mapleader=","
 
 let &colorcolumn="80,".join(range(110,999),",")
