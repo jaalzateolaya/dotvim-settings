@@ -1,9 +1,18 @@
 #!/usr/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Install vundle
+vundle_dir=~/.vim/bundle/Vundle.vim
+
+if [ -d $vundle_dir ]; then
+	git clone https://github.com/VundleVim/Vundle.vim.git $vundle_dir
+fi
+
 # FIXME: CWD dependency MUST be fixed.
 # Copy Vimrc to home directory
-cp {,~/.}vimrc
+cp {$DIR/../,~/.}vimrc
 # Copy Gvimrc to home directory
-cp {,~/.}gvimrc
+cp {$DIR/../,~/.}gvimrc
 
-vim +BundleClean +BundleInstall! +qall
+vim +BundleClean +BundleInstall! "+let g:session_autoload='no'" +qall
