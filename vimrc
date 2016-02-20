@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin '2072/PHP-Indenting-for-VIm'
 Plugin '2072/vim-syntax-for-PHP'
 Plugin 'HTML-AutoCloseTag'
+Plugin 'SirVer/ultisnips'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'alexander-alzate/vawa.vim'
 Plugin 'alexander-alzate/vim-color-hour'
@@ -39,7 +40,6 @@ Plugin 'tobyS/vmustache'
 Plugin 'tomtom/checksyntax_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'ultisnips'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
@@ -92,9 +92,6 @@ autocmd BufEnter,BufWinEnter *
 			\ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
 				\ | q
 			\ | endif
-"autocmd bufenter *
-"		\ if (winnr("$") == 1 && exists("b:NERDTreew") &&
-"		\ b:NERDTree.isTabFree()) | q | endif
 
 let NERDTreeChDirMode = 2
 let NERDTreeShowBookmarks = 1
