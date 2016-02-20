@@ -4,7 +4,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp += ~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -51,20 +51,20 @@ filetype plugin indent on    " required
 " UltiSnips Configuration
 "------------------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsEditSplit="vertical"
 
 " Set the author name
-let g:snips_author = $AUTHOR
-let g:snips_copy = $COPY
+let g:snips_author=$AUTHOR
+let g:snips_copy=$COPY
 
 " PDV 2 (PDV - PHP Documentor for VIM - 2)
 "-----------------------------------------
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+let g:pdv_template_dir=$HOME ."/.vim/bundle/pdv/templates_snip"
 "nnoremap <buffer> <C-S> :call pdv#DocumentWithSnip()<CR>
 nnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
 inoremap <C-P> <ESC>:call pdv#DocumentWithSnip()<CR>i
@@ -75,13 +75,13 @@ inoremap <C-P> <ESC>:call pdv#DocumentWithSnip()<CR>i
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
 "Sort according to their orther in the source file
-let g:tagbar_sort = 0
-let g:tagbar_autoclose = 1
-let g:tagbar_autofocus = 1
-let g:tagbar_foldlevel = 2
+let g:tagbar_sort=0
+let g:tagbar_autoclose=1
+let g:tagbar_autofocus=1
+let g:tagbar_foldlevel=2
 
 " Show line numbers in the Tagbar windows
-" let g:tagbar_show_linenumbers = 2
+" let g:tagbar_show_linenumbers=2
 
 " NERDTree Options and Configuration
 "----------------------------------
@@ -93,16 +93,16 @@ autocmd BufEnter,BufWinEnter *
 				\ | q
 			\ | endif
 
-let NERDTreeBookmarksFile = $HOME/.vim/.NERDTreeBookmarks
-let NERDTreeChDirMode = 2
-let NERDTreeShowBookmarks = 1
-let NERDTreeQuitOnOpen = 1
+let NERDTreeBookmarksFile="$HOME/.vim/.NERDTreeBookmarks"
+let NERDTreeChDirMode=2
+let NERDTreeShowBookmarks=1
+let NERDTreeQuitOnOpen=1
 
 " Vim Indent Guides
 " -----------------
-let g:indent_guides_enable_on_vim_startup = 1
-"let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup=1
+"let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
 
 " Lookupfiles
 " -----------
@@ -118,8 +118,8 @@ vmap <unique> <silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
 
 " Session
 " -------
-set sessionoptions -= options
-set sessionoptions -= help
+set sessionoptions-=options
+set sessionoptions-=help
 
 " Misc Configuration
 "------------------
@@ -137,16 +137,16 @@ set list lcs=tab:\¦˲
 
 syntax on
 set number
-set tabstop = 4
-set softtabstop = 4
-set shiftwidth = 4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set noexpandtab
 set hls
-set textwidth = 80
-set fo += orj
-let mapleader = ","
+set textwidth=80
+set fo+=orj
+let mapleader=","
 
-let &colorcolumn = "80,".join(range(110,999),",")
+let &colorcolumn="80,".join(range(110,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Refresh without higlights
