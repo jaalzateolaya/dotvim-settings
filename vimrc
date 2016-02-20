@@ -4,7 +4,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp += ~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -51,12 +51,12 @@ filetype plugin indent on    " required
 " UltiSnips Configuration
 "------------------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEditSplit = "vertical"
 
 " Set the author name
 let g:snips_author = $AUTHOR
@@ -93,8 +93,10 @@ autocmd BufEnter,BufWinEnter *
 				\ | q
 			\ | endif
 
+let NERDTreeBookmarksFile = $HOME/.vim/.NERDTreeBookmarks
 let NERDTreeChDirMode = 2
 let NERDTreeShowBookmarks = 1
+let NERDTreeQuitOnOpen = 1
 
 " Vim Indent Guides
 " -----------------
@@ -116,8 +118,8 @@ vmap <unique> <silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
 
 " Session
 " -------
-set sessionoptions-=options
-set sessionoptions-=help
+set sessionoptions -= options
+set sessionoptions -= help
 
 " Misc Configuration
 "------------------
@@ -135,16 +137,16 @@ set list lcs=tab:\¦˲
 
 syntax on
 set number
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop = 4
+set softtabstop = 4
+set shiftwidth = 4
 set noexpandtab
 set hls
-set textwidth=80
-set fo+=orj
-let mapleader=","
+set textwidth = 80
+set fo += orj
+let mapleader = ","
 
-let &colorcolumn="80,".join(range(110,999),",")
+let &colorcolumn = "80,".join(range(110,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Refresh without higlights
