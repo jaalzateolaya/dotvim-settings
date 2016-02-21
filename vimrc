@@ -93,7 +93,7 @@ autocmd BufEnter,BufWinEnter *
 				\ | q
 			\ | endif
 
-let NERDTreeBookmarksFile="$HOME/.vim/.NERDTreeBookmarks"
+let NERDTreeBookmarksFile=$HOME."/.vim/NERDTreeBookmarks"
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
 let NERDTreeQuitOnOpen=1
