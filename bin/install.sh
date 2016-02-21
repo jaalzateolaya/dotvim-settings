@@ -17,6 +17,6 @@ cp {$DIR/../,~/.}vimrc
 cp {$DIR/../,~/.}gvimrc
 
 # Copy vim dir to home directory
-cp -r {$DIR/../,~/.}vim
+cp -r $DIR/../vim/* ~/.vim
 
 vim +BundleClean +BundleInstall! "+let g:session_autoload='no'" +qall
