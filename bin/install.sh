@@ -77,9 +77,7 @@ fi
 # If there is 1 element in the array, at this point, it must be +qall, so, don't
 # run vim.
 if [ ! 1 -eq ${#commands[@]} ]; then
-	echo 3 le ${#commands[@]} ${commands[@]}
 	if [ 0 -eq $quit_at_finished ]; then
-		echo $quit_at_finisheder
 		unset commands[2]
 	fi
 
