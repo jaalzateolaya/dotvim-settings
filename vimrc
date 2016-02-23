@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin '2072/PHP-Indenting-for-VIm'
 Plugin '2072/vim-syntax-for-PHP'
 Plugin 'HTML-AutoCloseTag'
+Plugin 'SirVer/ultisnips'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'alexander-alzate/vawa.vim'
 Plugin 'alexander-alzate/vim-color-hour'
@@ -30,6 +31,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'lookupfile'
 Plugin 'majutsushi/tagbar'
 Plugin 'othree/html5.vim'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdtree'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'sniphpets/sniphpets'
@@ -39,7 +41,6 @@ Plugin 'tobyS/vmustache'
 Plugin 'tomtom/checksyntax_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'ultisnips'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
@@ -59,12 +60,12 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Set the author name
-let g:snips_author = $AUTHOR
-let g:snips_copy = $COPY
+let g:snips_author=$AUTHOR
+let g:snips_copy=$COPY
 
 " PDV 2 (PDV - PHP Documentor for VIM - 2)
 "-----------------------------------------
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+let g:pdv_template_dir=$HOME ."/.vim/bundle/pdv/templates_snip"
 "nnoremap <buffer> <C-S> :call pdv#DocumentWithSnip()<CR>
 nnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
 inoremap <C-P> <ESC>:call pdv#DocumentWithSnip()<CR>i
@@ -75,13 +76,13 @@ inoremap <C-P> <ESC>:call pdv#DocumentWithSnip()<CR>i
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
 "Sort according to their orther in the source file
-let g:tagbar_sort = 0
-let g:tagbar_autoclose = 1
-let g:tagbar_autofocus = 1
-let g:tagbar_foldlevel = 2
+let g:tagbar_sort=0
+let g:tagbar_autoclose=1
+let g:tagbar_autofocus=1
+let g:tagbar_foldlevel=2
 
 " Show line numbers in the Tagbar windows
-" let g:tagbar_show_linenumbers = 2
+" let g:tagbar_show_linenumbers=2
 
 " NERDTree Options and Configuration
 "----------------------------------
@@ -92,18 +93,17 @@ autocmd BufEnter,BufWinEnter *
 			\ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
 				\ | q
 			\ | endif
-"autocmd bufenter *
-"		\ if (winnr("$") == 1 && exists("b:NERDTreew") &&
-"		\ b:NERDTree.isTabFree()) | q | endif
 
-let NERDTreeChDirMode = 2
-let NERDTreeShowBookmarks = 1
+let NERDTreeBookmarksFile=$HOME."/.vim/NERDTreeBookmarks"
+let NERDTreeChDirMode=2
+let NERDTreeShowBookmarks=1
+let NERDTreeQuitOnOpen=1
 
 " Vim Indent Guides
 " -----------------
-let g:indent_guides_enable_on_vim_startup = 1
-"let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup=1
+"let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
 
 " Lookupfiles
 " -----------
@@ -137,15 +137,16 @@ autocmd BufReadPost *
 set list lcs=tab:\¦˲
 
 syntax on
-set number
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set noexpandtab
-set hls
-set textwidth=80
+
 set fo+=orj
-set hid
+set hidden
+set hls
+set noexpandtab
+set number
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set textwidth=80
 
 let mapleader=","
 
@@ -155,4 +156,7 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 " Refresh without higlights
 imap <C-L> <ESC>:noh<CR>a
 map <C-L> :noh<CR>
+
+" QUESTION: Should be loaded from env?
+map <Leader>t :!gnome-terminal<Esc>
 
