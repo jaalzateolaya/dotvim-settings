@@ -153,3 +153,6 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 imap <C-L> <ESC>:noh<CR>a
 map <C-L> :noh<CR>
 
+" QUESTION: Should be loaded from env?
+map <Leader>t :!gnome-terminal<Esc>
+
