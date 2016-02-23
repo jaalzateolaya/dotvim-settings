@@ -31,6 +31,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'lookupfile'
 Plugin 'majutsushi/tagbar'
 Plugin 'othree/html5.vim'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdtree'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'sniphpets/sniphpets'
@@ -136,14 +137,17 @@ autocmd BufReadPost *
 set list lcs=tab:\¦˲
 
 syntax on
-set number
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set noexpandtab
-set hls
-set textwidth=80
+
 set fo+=orj
+set hidden
+set hls
+set noexpandtab
+set number
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set textwidth=80
+
 let mapleader=","
 
 let &colorcolumn="80,".join(range(110,999),",")
