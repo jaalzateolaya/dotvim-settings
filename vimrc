@@ -151,7 +151,7 @@ set textwidth=80
 let mapleader=","
 
 let &colorcolumn="80,".join(range(110,999),",")
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
+autocmd VimEnter * highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Refresh without higlights
 imap <C-L> <ESC>:noh<CR>a
