@@ -32,13 +32,14 @@ Plugin 'lookupfile'
 Plugin 'majutsushi/tagbar'
 Plugin 'othree/html5.vim'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'sniphpets/sniphpets'
 Plugin 'sniphpets/sniphpets-common'
 Plugin 'tobyS/pdv'
 Plugin 'tobyS/vmustache'
-Plugin 'tomtom/checksyntax_vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/taglist.vim'
@@ -121,6 +122,22 @@ vmap <unique> <silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
 " -------
 set sessionoptions-=options
 set sessionoptions-=help
+let g:session_autoload='yes'
+let g:session_default_to_last=1
+let g:session_autosave='yes'
+let g:session_autosave_periodic=10
+let g:session_persist_colors=0
+
+" Syntastic Configuration
+" -----------------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " Misc Configuration
 "------------------
@@ -151,7 +168,7 @@ set textwidth=80
 let mapleader=","
 
 let &colorcolumn="80,".join(range(110,999),",")
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
+autocmd VimEnter * highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Refresh without higlights
 imap <C-L> <ESC>:noh<CR>a
