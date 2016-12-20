@@ -177,3 +177,7 @@ map <C-L> :noh<CR>
 " QUESTION: Should be loaded from env?
 map <Leader>t <ESC>:!gnome-terminal<CR><ESC>
 
+" Delete shortcuts
+imap <C-K> <ESC>ddi
+nmap <C-K> dd
+
