@@ -146,7 +146,7 @@ let g:syntastic_check_on_wq = 0
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
 " (happens when dropping a file on gvim).
-autocmd BufReadPost *
+autocmd BufEnter *
 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 \   exe "normal g`\"" |
 \ endif
@@ -177,4 +177,8 @@ map <C-L> :noh<CR>
 
 " QUESTION: Should be loaded from env?
 map <Leader>t <ESC>:!gnome-terminal<CR><ESC>
+
+" Delete shortcuts
+imap <C-K> <ESC>ddi
+nmap <C-K> dd
 
