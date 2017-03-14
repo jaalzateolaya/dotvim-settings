@@ -97,29 +97,33 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Misc Configuration
+" Personal Configuration
 "------------------
-
-" indentation
-set list lcs=tab:\¦˲
 
 syntax on
 
+" Options
+set list lcs=tab:\¦˲
 set formatoptions+=orj
+set textwidth=80
+
 set hidden
 set hlsearch
-set noexpandtab
+
 set number
+
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set textwidth=80
+set noexpandtab
 
 let mapleader=","
 
+" Custom autocomands
 let &colorcolumn="80,".join(range(110,999),",")
 autocmd VimEnter * highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
+" Custom mappings
 " Refresh without higlights
 imap <C-L> <ESC>:nohlsearch<CR>a
 map <C-L> :nohlsearch<CR>
