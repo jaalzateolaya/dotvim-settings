@@ -13,39 +13,21 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Vundle Plugins
-"Plugin 'Firef0x/matchit'
-Plugin '2072/PHP-Indenting-for-VIm'
 Plugin '2072/vim-syntax-for-PHP'
-Plugin 'HTML-AutoCloseTag'
 Plugin 'SirVer/ultisnips'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'alexander-alzate/vawa.vim'
+Plugin 'alexander-alzate/nerdtree'
 Plugin 'alexander-alzate/vim-color-hour'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'genutils'
 Plugin 'godlygeek/tabular'
-Plugin 'hail2u/vim-css3-syntax'
 Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'lookupfile'
 Plugin 'majutsushi/tagbar'
-Plugin 'othree/html5.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'sniphpets/sniphpets'
-Plugin 'sniphpets/sniphpets-common'
-Plugin 'tobyS/pdv'
-Plugin 'tobyS/vmustache'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,17 +45,6 @@ let g:UltiSnipsSnippetsDir=$HOME."/.vim/UltiSnips"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
-" Set the author name
-let g:snips_author=$AUTHOR
-let g:snips_copy=$COPY
-
-" PDV 2 (PDV - PHP Documentor for VIM - 2)
-"-----------------------------------------
-let g:pdv_template_dir=$HOME ."/.vim/bundle/pdv/templates_snip"
-"nnoremap <buffer> <C-S> :call pdv#DocumentWithSnip()<CR>
-nnoremap <C-P> :call pdv#DocumentWithSnip()<CR>
-inoremap <C-P> <ESC>:call pdv#DocumentWithSnip()<CR>i
 
 " Tagbar Options and Configuration
 "--------------------------------
@@ -104,33 +75,16 @@ let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
 let NERDTreeQuitOnOpen=1
 
-" Vim Indent Guides
-" -----------------
-let g:indent_guides_enable_on_vim_startup=1
-"let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-
-" Lookupfiles
-" -----------
-" Maps
-nmap <unique> <silent> <F3> <Plug>LookupFile
-imap <unique> <silent> <F3> <C-O><Plug>LookupFile
+" NERDCommenter and Configuration
+"----------------------------------
+let NERDSpaceDelims=1
+let NERDRemoveExtraSpaces=1
 
 " Tabular
 " -------
 " For PHP array assignment and regular assignment.
 " NOTE: tabular comes with a default tabular pattern for 'assignment'
 vmap <unique> <silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
-
-" Session
-" -------
-set sessionoptions-=options
-set sessionoptions-=help
-"let g:session_autoload='yes'
-"let g:session_default_to_last=1
-let g:session_autosave='yes'
-let g:session_autosave_periodic=10
-let g:session_persist_colors=0
 
 " Syntastic Configuration
 " -----------------------
