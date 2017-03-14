@@ -100,8 +100,6 @@ let g:syntastic_check_on_wq = 0
 " Personal Configuration
 "------------------
 
-syntax on
-
 " Options
 set list lcs=tab:\¦˲
 set formatoptions+=orj
