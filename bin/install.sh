@@ -37,11 +37,8 @@ done
 
 announce "Installing plugin manager"
 if [ 1 -eq $install_plugin_manager ]; then
-	vundle_dir=$HOME/.vim/bundle/Vundle.vim
-
-	if [ ! -d $vundle_dir ]; then
-		git clone https://github.com/VundleVim/Vundle.vim.git $vundle_dir
-	fi
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 announce "Installing vim initiallization file (vimrc)"
@@ -59,7 +56,7 @@ announce "Installing vim folder"
 cp -r $DIR/vim/* $HOME/.vim
 
 # Vim commands to be executed.
-commands=( +BundleClean +BundleInstall! +qall )
+commands=( +PlugClean +PlugUpdate +qall )
 
 if [ 0 -eq $clean_unused_plugins ]; then
 	unset commands[0]
@@ -67,6 +64,10 @@ fi
 
 if [ 0 -eq $install_plugins ]; then
 	unset commands[1]
+
+	# Projects dir will be used to store plugins with the plugin manager
+	VIM_POJECTS_DIR=${XDG_PROJECTS_DIR:-$HOME/Projects/}/vim
+	[ -d $VIM_POJECTS_DIR ] && mkdir --parents $VIM_POJECTS_DIR
 fi
 
 # If there is 1 element in the array, at this point, it must be +qall, so, don't

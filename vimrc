@@ -1,39 +1,37 @@
 source $VIMRUNTIME/defaults.vim
 
-" Vundle Configuration
+" Plugin Manager Configuration
 " --------------------
-set nocompatible              " be iMproved, required
-filetype off                  " required
+let VIM_PROJECTS_DIR = (
+			\ strlen($XDG_PROJECTS_DIR)
+			\ ? $XDG_PROJECTS_DIR
+			\ : $HOME . '/Projects'
+		\ ) . '/vim'
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin(VIM_PROJECTS_DIR)
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" File type plugins
+Plug '2072/vim-syntax-for-PHP', { 'for': 'php' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 
-" Vundle Plugins
-Plugin '2072/vim-syntax-for-PHP'
-Plugin 'SirVer/ultisnips'
-Plugin 'alexander-alzate/nerdtree'
-Plugin 'alexander-alzate/vim-color-hour'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'godlygeek/tabular'
-Plugin 'honza/vim-snippets'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
+" Misc plugins
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+Plug 'alexander-alzate/nerdtree'
+Plug 'alexander-alzate/vim-color-hour'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'godlygeek/tabular'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+
+call plug#end()
 
 " UltiSnips Configuration
 "------------------------
