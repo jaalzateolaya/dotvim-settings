@@ -105,9 +105,9 @@ set list lcs=tab:\¦˲
 
 syntax on
 
-set fo+=orj
+set formatoptions+=orj
 set hidden
-set hls
+set hlsearch
 set noexpandtab
 set number
 set shiftwidth=4
@@ -121,8 +121,8 @@ let &colorcolumn="80,".join(range(110,999),",")
 autocmd VimEnter * highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " Refresh without higlights
-imap <C-L> <ESC>:noh<CR>a
-map <C-L> :noh<CR>
+imap <C-L> <ESC>:nohlsearch<CR>a
+map <C-L> :nohlsearch<CR>
 
 " QUESTION: Should be loaded from env?
 map <Leader>t <ESC>:!gnome-terminal<CR><ESC>
