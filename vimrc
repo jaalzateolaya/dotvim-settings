@@ -1,3 +1,5 @@
+source $VIMRUNTIME/defaults.vim
+
 " Vundle Configuration
 " --------------------
 set nocompatible              " be iMproved, required
