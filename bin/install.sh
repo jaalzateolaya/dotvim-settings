@@ -41,19 +41,14 @@ if [ 1 -eq $install_plugin_manager ]; then
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-announce "Installing vim initiallization file (vimrc)"
-install -m 0600 {$DIR/,$HOME/.}vimrc
-
-announce "Installing gvim initialization file (gvimrc)"
-install -m 0600 {$DIR/,$HOME/.}gvimrc
-
 # Copy vim dir to home directory
-if [ ! -d ~/.vim ]; then
-	mkdir ~/.vim
+announce "Installing vim files"
+VIM_DIR=$HOME/.vim
+if [ ! -d $VIM_DIR ]; then
+	cp --recursive $DIR/vim $VIM_DIR
+else
+	find ./vim -exec cp --update --recursive {} $VIM_DIR \;
 fi
-
-announce "Installing vim folder"
-cp -r $DIR/vim/* $HOME/.vim
 
 # Vim commands to be executed.
 commands=( +PlugClean +PlugUpdate +qall )

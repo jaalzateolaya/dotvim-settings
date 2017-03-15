@@ -34,51 +34,52 @@ Plug 'tpope/vim-surround'
 call plug#end()
 
 " # UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" ## Configuration
+let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-" ## Set personal snippets directory
-let g:UltiSnipsSnippetsDir=$HOME."/.vim/UltiSnips"
+" ### Set personal snippets directory
+let g:UltiSnipsSnippetsDir = $HOME . "/.vim/snippets"
 
-" ## Tell :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" ### Tell :UltiSnipsEdit to split the window
+let g:UltiSnipsEditSplit = "vertical"
 
 " # Tagbar Options and Configuration
+" ## Configuration
+let g:tagbar_sort      = 0
+let g:tagbar_autoclose = 1
+let g:tagbar_autofocus = 1
+let g:tagbar_foldlevel = 2
+
 " ## Mappings
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
-" ## Configuration
-let g:tagbar_sort=0
-let g:tagbar_autoclose=1
-let g:tagbar_autofocus=1
-let g:tagbar_foldlevel=2
-
 " # NERDTree
-" ## Mappings
-map <F12> :NERDTreeToggle<CR>
+" ## Configuration
+let NERDTreeBookmarksFile = $HOME."/.vim/NERDTreeBookmarks"
+let NERDTreeChDirMode     = 2
+let NERDTreeShowBookmarks = 1
+let NERDTreeQuitOnOpen    = 1
 
 " ## Closes NERDTree whether it is the left open window
 autocmd BufEnter,BufWinEnter *
-			\ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-				\ | q
-			\ | endif
+		\ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) |
+			\ q |
+		\ endif
 
-" ## Configuration
-let NERDTreeBookmarksFile=$HOME."/.vim/NERDTreeBookmarks"
-let NERDTreeChDirMode=2
-let NERDTreeShowBookmarks=1
-let NERDTreeQuitOnOpen=1
+" ## Mappings
+map <F12> :NERDTreeToggle<CR>
 
 " # NERDCommenter
 " ## Configuration
-let NERDSpaceDelims=1
-let NERDRemoveExtraSpaces=1
+let NERDSpaceDelims       = 1
+let NERDRemoveExtraSpaces = 1
 
 " # Tabular
 " ## Mappings
 " ### For PHP array and regular assignments.
-vmap <unique> <silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
+vmap <unique><silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
 
 " # Syntastic
 " ## Configuration
@@ -87,39 +88,40 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list            = 1
+let g:syntastic_check_on_open            = 1
+let g:syntastic_check_on_wq              = 0
 
 " # Personal Configuration
 " ## Options
-set list lcs=tab:\¦˲
-set formatoptions+=orj
-set textwidth=80
+set list lcs       =tab:\¦˲
+set formatoptions +=orj
+set viminfo        ='10,<50,s10,h,n~/.vim/viminfo
+set textwidth      =80
 
 set hidden
 set hlsearch
 
 set number
 
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth  =4
+set softtabstop =4
+set tabstop     =4
 set noexpandtab
 
-let mapleader=","
+let mapleader    = ","
+let &colorcolumn = "80,".join(range(110, 999), ",")
 
 " ## Autocomands
-let &colorcolumn="80,".join(range(110,999),",")
 autocmd VimEnter * highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " ## Mappings
 " ### Refresh without higlights
-imap <C-L> <ESC>:nohlsearch<CR>a
-map <C-L> :nohlsearch<CR>
+imap <silent> <C-L> <ESC>:nohlsearch<CR>a
+map  <silent> <C-L> :nohlsearch<CR>
 
 " ### Open terminal emulator
-map <Leader>t <ESC>:!gnome-terminal<CR><ESC>
+map <silent> <Leader>t <ESC>:call system('gnome-terminal')<CR><ESC>
 
 " ### Delete current line
 imap <C-K> <ESC>ddi
