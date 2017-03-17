@@ -11,7 +11,9 @@
 set lines=60 columns=200
 
 " Don't display the menu or toolbar. Just the screen.
-set guioptions-=Tr
+set guioptions -=L
+set guioptions -=T
+set guioptions -=r
 
 " Font.
 let &guifont="DejaVu Sans Mono 10"
