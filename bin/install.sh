@@ -1,6 +1,8 @@
 #!/usr/bin/bash
 
-DIR=$( dirname "${BASH_SOURCE[0]}" )/..
+OLD_PWD=$PWD
+# cd into the repository
+cd $( dirname "${BASH_SOURCE[0]}" )/..
 
 install_plugin_manager=1
 install_plugins=1
@@ -43,12 +45,14 @@ fi
 
 # Copy vim dir to home directory
 announce "Installing vim files"
-VIM_DIR=$HOME/.vim
-if [ ! -d $VIM_DIR ]; then
-	cp --recursive $DIR/vim $VIM_DIR
-else
-	find ./vim -exec cp --update --recursive {} $VIM_DIR \;
-fi
+VIM_DEST="$HOME/.vim"
+VIM_SRC=./vim
+for file in $(find "$VIM_SRC" -type f); do
+	git check-ignore -q "$file" && continue
+
+	announce "Installing ${file#$VIM_SRC}"
+	install -D --mode 0600 "$file" "$VIM_DEST/${file#$VIM_SRC}"
+done
 
 # Vim commands to be executed.
 commands=( +PlugClean +PlugUpdate +qall )
@@ -76,5 +80,6 @@ if [ ! 1 -eq ${#commands[@]} ]; then
 	vim "+let g:session_autoload='no'" ${commands[@]}
 fi
 
+cd "$OLD_PWD"
 announce "Finished!"
 
