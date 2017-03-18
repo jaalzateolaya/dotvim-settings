@@ -1,3 +1,3 @@
-set textwidth     =72
-set colorcolumn   =72
-set formatoptions =nt
+setlocal textwidth     =72
+setlocal colorcolumn   =72
+setlocal formatoptions =nt
