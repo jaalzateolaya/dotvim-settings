@@ -21,6 +21,7 @@ Plug 'honza/vim-snippets'
 
 Plug 'alexander-alzate/nerdtree'
 Plug 'alexander-alzate/vim-color-hour'
+Plug 'alexander-alzate/vim-session'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
@@ -94,10 +95,10 @@ let g:syntastic_check_on_wq              = 0
 
 " # Personal Configuration
 " ## Options
-set list lcs       =tab:\¦˲
-set formatoptions +=orj
-set viminfo        ='10,<50,s10,h,n~/.vim/viminfo
-set textwidth      =80
+set list lcs      =tab:\¦˲
+set formatoptions =torcj
+set viminfo       ='10,<50,s10,h,n~/.vim/viminfo
+set textwidth     =80
 
 set hidden
 set hlsearch
