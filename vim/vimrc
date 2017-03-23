@@ -41,7 +41,7 @@ let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " ### Set personal snippets directory
-let g:UltiSnipsSnippetsDir = $HOME . "/.vim/snippets"
+let g:UltiSnipsSnippetsDir = $HOME . "/.vim/ultisnippets"
 
 " ### Tell :UltiSnipsEdit to split the window
 let g:UltiSnipsEditSplit = "vertical"
