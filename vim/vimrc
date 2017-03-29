@@ -93,6 +93,11 @@ let g:syntastic_auto_loc_list            = 1
 let g:syntastic_check_on_open            = 1
 let g:syntastic_check_on_wq              = 0
 
+" # Vim Session
+" ## Configuration
+let g:session_persist_colors = 0
+let g:session_autosave       = "yes"
+
 " # Personal Configuration
 " ## Options
 set list lcs      =tab:\¦˲
