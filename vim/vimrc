@@ -28,6 +28,7 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
+Plug 'zirrostig/vim-schlepp'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -98,6 +99,14 @@ let g:syntastic_check_on_wq              = 0
 let g:session_persist_colors = 0
 let g:session_autosave       = "yes"
 
+" # Vim Schlepp
+" ## Mappings
+vmap <unique> <C-k> <Plug>SchleppUp
+vmap <unique> <C-j> <Plug>SchleppDown
+vmap <unique> <C-h> <Plug>SchleppLeft
+vmap <unique> <C-l> <Plug>SchleppRight
+vmap <unique> <C-d> <Plug>SchleppDup
+
 " # Personal Configuration
 " ## Options
 set list lcs      =tab:\¦˲
@@ -117,12 +126,11 @@ set noexpandtab
 
 let mapleader    = ","
 let &colorcolumn = "80,".join(range(110, 999), ",")
-autocmd VimEnter * highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " ## Mappings
 " ### Refresh without higlights
 imap <silent> <C-L> <ESC>:nohlsearch<CR>a
-map  <silent> <C-L> :nohlsearch<CR>
+nmap <silent> <C-L> :nohlsearch<CR>
 
 " ### Open terminal emulator
 map <silent> <Leader>t <ESC>:call system('gnome-terminal')<CR><ESC>
