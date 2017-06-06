@@ -82,6 +82,8 @@ let NERDRemoveExtraSpaces = 1
 " ## Mappings
 " ### For PHP array and regular assignments.
 vmap <unique><silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
+nmap <unique><silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
+imap <unique><silent> <F8> <ESC>:Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>i
 
 " # Syntastic
 " ## Configuration
