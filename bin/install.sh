@@ -23,7 +23,7 @@ help_msg () {
 }
 
 announce () {
-	echo $(date +%c): ${1}...
+	echo -e $(date +%c): ${1}...
 }
 
 while getopts :vbcqh opt
@@ -48,10 +48,17 @@ announce "Installing vim files"
 VIM_DEST="$HOME/.vim"
 VIM_SRC=./vim
 for file in $(find "$VIM_SRC" -type f); do
-	git check-ignore -q "$file" && continue
+	file_dest="$VIM_DEST/${file#$VIM_SRC}"
+
+	git check-ignore -q "$file" || test !-e $file_dest && continue
+
+	if [ $(stat --format=%Y $file_dest) -gt $(stat --format=%Y $file) ]; then
+		announce "\033[0;31mConflicting file!:\033[0m $file"
+		continue
+	fi
 
 	announce "Installing ${file#$VIM_SRC}"
-	install -D --mode 0600 "$file" "$VIM_DEST/${file#$VIM_SRC}"
+	install -D --preserve-timestamps --mode 0600 "$file" "$file_dest"
 done
 
 # Vim commands to be executed.
