@@ -61,6 +61,24 @@ for file in $(find "$VIM_SRC" -type f); do
 	install -D --preserve-timestamps --mode 0600 "$file" "$file_dest"
 done
 
+# Install snippets
+SNIPPETS_REPO="https://github.com/alexander-alzate/vim-snippets"
+SNIPPETS_DEST="${VIM_DEST}/ultisnippets"
+
+if [ ! -d "${SNIPPETS_DEST}/.git" ]; then
+	rm --recursive --force "${SNIPPETS_DEST}"
+	git clone "$SNIPPETS_REPO" "${SNIPPETS_DEST}"
+else
+	git -C "${SNIPPETS_DEST}" fetch
+	head_rev=$(git -C "${SNIPPETS_DEST}" rev-parse @)
+	remote_rev=$(git -C "${SNIPPETS_DEST}" rev-parse @{u})
+	rep_status=$(git -C "${SNIPPETS_DEST}" status --short)
+
+	if [ "$head_rev" != "$remote_rev" -o ! -z "$rep_status" ]; then
+		announce "\033[0;31mRepository is not up-to-date!:\033[0m ${SNIPPETS_DEST}"
+	fi
+fi
+
 # Vim commands to be executed.
 commands=( +PlugClean +PlugUpdate +qall )
 
