@@ -50,7 +50,7 @@ VIM_SRC=./vim
 for file in $(find "$VIM_SRC" -type f); do
 	file_dest="$VIM_DEST/${file#$VIM_SRC}"
 
-	git check-ignore -q "$file" || test !-e $file_dest && continue
+	git check-ignore -q "$file" || test ! -e $file_dest && continue
 
 	if [ $(stat --format=%Y $file_dest) -gt $(stat --format=%Y $file) ]; then
 		announce "\033[0;31mConflicting file!:\033[0m $file"
