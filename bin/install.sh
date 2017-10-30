@@ -52,8 +52,8 @@ for file in $(find "$VIM_SRC" -type f); do
 
 	git check-ignore -q "$file" && continue
 
-	if [ -e $file_dest -a \
-			$(stat --format=%Y $file_dest) -gt $(stat --format=%Y $file) ]; then
+	if [ -e "$file_dest" ] && \
+			[ $(stat --format=%Y $file_dest) -gt $(stat --format=%Y $file) ]; then
 		announce "\033[0;31mConflicting file!:\033[0m $file"
 		continue
 	fi
