@@ -79,13 +79,6 @@ map <F12> :NERDTreeToggle<CR>
 let NERDSpaceDelims       = 1
 let NERDRemoveExtraSpaces = 1
 
-" # Tabular
-" ## Mappings
-" ### For PHP array and regular assignments.
-vmap <unique><silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
-nmap <unique><silent> <F8> :Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>
-imap <unique><silent> <F8> <ESC>:Tabularize /^[^=]*\zs=>\?/l1c1l0<CR>i
-
 " # Syntastic
 " ## Configuration
 set statusline+=%#warningmsg#
