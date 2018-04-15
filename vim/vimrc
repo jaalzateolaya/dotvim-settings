@@ -112,7 +112,7 @@ vmap <unique> <C-d> <Plug>SchleppDup
 
 " # Personal Configuration
 " ## Options
-set list lcs      =tab:\¦˲
+set list lcs      =tab:\¦›
 set formatoptions =torcj
 set viminfo       ='10,<50,s10,h,n~/.vim/viminfo
 set textwidth     =80
