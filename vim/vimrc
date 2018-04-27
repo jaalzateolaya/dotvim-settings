@@ -64,6 +64,9 @@ let NERDTreeBookmarksFile = $HOME."/.vim/NERDTreeBookmarks"
 let NERDTreeChDirMode     = 2
 let NERDTreeShowBookmarks = 1
 let NERDTreeQuitOnOpen    = 1
+let NERDTreeIgnore        = ['\.git$', 'node_modules', '\~$', '\.sourcemaps']
+let NERDTreeShowHidden    = 1
+let NERDTreeStatusline    = "%{fnamemodify(getcwd(), ':t')}"
 
 " ## Closes NERDTree whether it is the left open window
 autocmd BufEnter,BufWinEnter *
