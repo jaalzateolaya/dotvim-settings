@@ -112,6 +112,7 @@ set list listchars =tab:\¦›
 set formatoptions  =torcj
 set viminfo        ='10,<50,s10,h,n~/.vim/viminfo
 set textwidth      =80
+set foldmethod     =syntax
 
 set hidden
 set hlsearch
