@@ -29,6 +29,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'zirrostig/vim-schlepp'
 Plug 'w0rp/ale'
+Plug 'cakebaker/scss-syntax.vim'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
