@@ -83,17 +83,6 @@ map <F12> :NERDTreeToggle<CR>
 let NERDSpaceDelims       = 1
 let NERDRemoveExtraSpaces = 1
 
-" # Syntastic
-" ## Configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list            = 1
-let g:syntastic_check_on_open            = 1
-let g:syntastic_check_on_wq              = 0
-
 " # Vim Session
 " ## Configuration
 let g:session_persist_colors = 0
