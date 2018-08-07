@@ -108,6 +108,7 @@ set hidden
 set hlsearch
 
 set number
+set shellcmdflag =-lc
 
 set shiftwidth  =4
 set softtabstop =4
