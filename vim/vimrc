@@ -14,6 +14,7 @@ call plug#begin(VIM_PROJECTS_DIR)
 Plug '2072/vim-syntax-for-PHP', { 'for': 'php' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'alexander-alzate/vim-markdown', { 'for': 'markdown' }
+Plug 'mattn/emmet-vim', { 'for': 'html' }
 
 " ## Misc plugins
 Plug 'SirVer/ultisnips'
