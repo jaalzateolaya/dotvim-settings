@@ -110,6 +110,8 @@ set foldmethod     =syntax
 set hidden
 set hlsearch
 
+set spell
+set spelllang=en_us
 set number
 set shellcmdflag =-lc
 
