@@ -12,30 +12,28 @@ call plug#begin(VIM_PROJECTS_DIR)
 
 " ## File type plugins
 Plug '2072/vim-syntax-for-PHP', { 'for': 'php' }
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'alexander-alzate/vim-markdown', { 'for': 'markdown' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 
 " ## Misc plugins
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 Plug 'alexander-alzate/nerdtree'
 Plug 'alexander-alzate/vim-color-hour'
 Plug 'alexander-alzate/vim-session'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
+Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
-Plug 'zirrostig/vim-schlepp'
-Plug 'w0rp/ale'
-Plug 'cakebaker/scss-syntax.vim'
-
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
+Plug 'zirrostig/vim-schlepp'
 
 call plug#end()
 
