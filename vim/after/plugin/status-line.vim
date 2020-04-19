@@ -7,14 +7,15 @@
 " License: GNU GPL v3
 
 function! s:git_status_line ()
-	if empty (fugitive#head ())
+	let head = fugitive#head()
+	if empty (head)
 		return ""
 	endif
 
 	let color = ""
-	if fugitive#head () == "master"
+	if head == "master"
 		let color = "%#ErrorMsg#"
-	elseif fugitive#head () =~ "devel"
+	elseif head =~ "devel"
 		let color ="%#MoreMsg#"
 	endif
 
