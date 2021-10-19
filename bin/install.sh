@@ -26,12 +26,12 @@ announce () {
 	echo -e $(date +%c): ${1}...
 }
 
-while getopts :vbcqh opt
+while getopts :cipqh opt
 do
 	case $opt in
-		v ) install_plugin_manager=0 ;;
-		b ) install_plugins=0 ;;
 		c ) clean_unused_plugins=0 ;;
+		i ) install_plugin_manager=0 ;;
+		p ) install_plugins=0 ;;
 		q ) quit_when_finished=0 ;;
 		\?) help_msg ;;
 	esac
