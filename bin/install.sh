@@ -4,9 +4,10 @@ OLD_PWD=$PWD
 # cd into the repository
 cd $( dirname "${BASH_SOURCE[0]}" )/..
 
-install_plugin_manager=1
-install_plugins=1
 clean_unused_plugins=1
+install_plugin_manager=1
+perform_linked_install=0
+install_plugins=1
 quit_when_finished=1
 
 help_msg () {
@@ -26,11 +27,12 @@ announce () {
 	echo -e $(date +%c): ${1}...
 }
 
-while getopts :cipqh opt
+while getopts :cilpq opt
 do
 	case $opt in
 		c ) clean_unused_plugins=0 ;;
 		i ) install_plugin_manager=0 ;;
+		l ) perform_linked_install=1 ;;
 		p ) install_plugins=0 ;;
 		q ) quit_when_finished=0 ;;
 		\?) help_msg ;;
@@ -46,21 +48,26 @@ fi
 # Copy vim dir to home directory
 announce "Installing vim files"
 VIM_DEST="$HOME/.vim"
-VIM_SRC=./vim
-for file in $(find "$VIM_SRC" -type f); do
-	file_dest="$VIM_DEST/${file#$VIM_SRC}"
+VIM_SRC="$PWD/vim"
 
-	git check-ignore -q "$file" && continue
+if [ 1 -eq $perform_linked_install ]; then
+	ln -s $VIM_SRC $VIM_DEST
+else
+	for file in $(find "$VIM_SRC" -type f); do
+		file_dest="$VIM_DEST/${file#$VIM_SRC}"
 
-	if [ -e "$file_dest" ] && \
-			[ $(stat --format=%Y $file_dest) -gt $(stat --format=%Y $file) ]; then
-		announce "\033[0;31mConflicting file!:\033[0m $file"
-		continue
-	fi
+		git check-ignore -q "$file" && continue
 
-	announce "Installing ${file#$VIM_SRC}"
-	install -D --preserve-timestamps --mode 0600 "$file" "$file_dest"
-done
+		if [ -e "$file_dest" ] && \
+				[ $(stat --format=%Y $file_dest) -gt $(stat --format=%Y $file) ]; then
+			announce "\033[0;31mConflicting file!:\033[0m $file"
+			continue
+		fi
+
+		announce "Installing ${file#$VIM_SRC}"
+		install -D --preserve-timestamps --mode 0600 "$file" "$file_dest"
+	done
+fi
 
 # Install snippets
 SNIPPETS_REPO="https://github.com/alexander-alzate/vim-snippets"
