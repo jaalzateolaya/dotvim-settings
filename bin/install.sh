@@ -51,7 +51,13 @@ VIM_DEST="$HOME/.vim"
 VIM_SRC="$PWD/vim"
 
 if [ 1 -eq $perform_linked_install ]; then
-	ln -s $VIM_SRC $VIM_DEST
+	if [ -d "$VIM_DEST" ]; then
+		mv "$VIM_DEST" "$VIM_DEST.backup"
+	fi
+
+	if [ ! -L "$VIM_DEST" ]; then
+		ln -s $VIM_SRC $VIM_DEST
+	fi
 else
 	for file in $(find "$VIM_SRC" -type f); do
 		file_dest="$VIM_DEST/${file#$VIM_SRC}"
