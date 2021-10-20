@@ -23,12 +23,15 @@ Plug 'alexander-alzate/vim-color-hour'
 Plug 'alexander-alzate/vim-session'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'dantleech/vim-phpstan'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
+Plug 'posva/vim-vue'
+Plug 'rhysd/vim-grammarous'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
@@ -70,6 +73,7 @@ let NERDTreeQuitOnOpen    = 1
 let NERDTreeIgnore        = ['\.git$', 'node_modules', '\~$', '\.sourcemaps']
 let NERDTreeShowHidden    = 1
 let NERDTreeStatusline    = "%{fnamemodify(getcwd(), ':t')}"
+let g:NERDTreeRespectWidlIgnore = 1
 
 " ## Closes NERDTree whether it is the left open window
 autocmd BufEnter,BufWinEnter *
@@ -84,6 +88,10 @@ map <F12> :NERDTreeToggle<CR>
 " ## Configuration
 let NERDSpaceDelims       = 1
 let NERDRemoveExtraSpaces = 1
+
+" # Grammarous
+
+let g:grammarous#languagetool_cmd='/usr/bin/languagetool -m es'
 
 " # Vim Session
 " ## Configuration
@@ -105,14 +113,16 @@ set formatoptions  =torcj
 set viminfo        ='10,<50,s10,h,n~/.vim/viminfo
 set textwidth      =80
 set foldmethod     =syntax
+set wildignore    +=node_modules/,vendor/,__pycache__/,venv/,.git/
+set re             =0
 
 set hidden
 set hlsearch
 
-set spell
 set spelllang=en_us
 set number
-set shellcmdflag =-lc
+set cursorline
+set cursorcolumn
 
 set shiftwidth  =4
 set softtabstop =4
