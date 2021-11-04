@@ -140,7 +140,7 @@ imap <silent> <C-L> <ESC>:nohlsearch<CR>a
 nmap <silent> <C-L> :nohlsearch<CR>
 
 " ### Open terminal emulator
-map <silent> <Leader>t <ESC>:call system('gnome-terminal')<CR><ESC>
+map <silent> <Leader>t :terminal<CR>
 
 " ### Delete current line
 imap <C-K> <ESC>ddi
