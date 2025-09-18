@@ -1,14 +1,7 @@
 " gvimrc config
-"
-" Based On:
-"   https://github.com/dotphiles/dotvim
-"
-" Thanks To:
-"   Ben O'Hara <bohara@gmail.com>
-"
 
-" Logical size of GVim window
-set lines=60 columns=200
+"GVim window size
+set lines=50 columns=180
 
 " Don't display the menu or toolbar. Just the screen.
 set guioptions -=L
@@ -16,5 +9,5 @@ set guioptions -=T
 set guioptions -=r
 
 " Font.
-let &guifont="DejaVu Sans Mono 10"
+set guifont=DroidSansM\ Nerd\ Font\ 10
 

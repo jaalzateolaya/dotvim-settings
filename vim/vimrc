@@ -1,7 +1,9 @@
 " # Extend From Defaults
+" #############################################################################
 source $VIMRUNTIME/defaults.vim
 
 " # Plugin Manager Configuration
+" #############################################################################
 let VIM_PROJECTS_DIR = (
 			\ strlen($XDG_PROJECTS_DIR)
 			\ ? $XDG_PROJECTS_DIR
@@ -12,39 +14,45 @@ call plug#begin(VIM_PROJECTS_DIR)
 
 " ## File type plugins
 Plug '2072/vim-syntax-for-PHP', { 'for': 'php' }
-Plug 'alexander-alzate/vim-markdown', { 'for': 'markdown' }
+Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
+Plug 'dantleech/vim-phpstan', { 'for': 'php' }
+Plug 'jaalzateolaya/vim-markdown', { 'for': 'markdown' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'javascriptreact'] }
+Plug 'posva/vim-vue', { 'for': 'vuejs' }
 
 " ## Misc plugins
 Plug 'SirVer/ultisnips'
-Plug 'alexander-alzate/nerdtree'
-Plug 'alexander-alzate/vim-color-hour'
-Plug 'alexander-alzate/vim-session'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'dantleech/vim-phpstan'
+Plug 'dense-analysis/ale'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
+Plug 'lukelbd/vim-tabline'
 Plug 'majutsushi/tagbar'
-Plug 'posva/vim-vue'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'preservim/nerdtree'
 Plug 'rhysd/vim-grammarous'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
 Plug 'zirrostig/vim-schlepp'
+
+" Plug 'bewakes/vim-rest-client'
 
 call plug#end()
 
+let mapleader    = ","
+
 " # UltiSnips
+" #############################################################################
 " ## Configuration
 let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
@@ -58,6 +66,7 @@ let g:UltiSnipsSnippetDirectories = ["UltiSnips", "ultisnippets"]
 let g:UltiSnipsEditSplit = "vertical"
 
 " # Tagbar Options and Configuration
+" #############################################################################
 " ## Configuration
 let g:tagbar_sort      = 0
 let g:tagbar_autoclose = 1
@@ -68,40 +77,53 @@ let g:tagbar_foldlevel = 2
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
 " # NERDTree
+" #############################################################################
 " ## Configuration
 let NERDTreeBookmarksFile = $HOME."/.vim/NERDTreeBookmarks"
 let NERDTreeChDirMode     = 2
 let NERDTreeShowBookmarks = 1
 let NERDTreeQuitOnOpen    = 1
-let NERDTreeIgnore        = ['\.git$', 'node_modules', '\~$', '\.sourcemaps']
-let NERDTreeShowHidden    = 1
 let NERDTreeStatusline    = "%{fnamemodify(getcwd(), ':t')}"
-let g:NERDTreeRespectWidlIgnore = 1
+let NERDTreeRespectWildIgnore = 1
 
 " ## Closes NERDTree whether it is the left open window
-autocmd BufEnter,BufWinEnter *
+augroup NERDTreeAG
+	autocmd!
+	autocmd BufEnter,BufWinEnter *
 		\ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) |
 			\ q |
 		\ endif
+augroup end
 
 " ## Mappings
 map <F12> :NERDTreeToggle<CR>
 
 " # NERDCommenter
+" #############################################################################
 " ## Configuration
 let NERDSpaceDelims       = 1
 let NERDRemoveExtraSpaces = 1
 
+" # CtrlP
+" #############################################################################
+" ## Configuration
+let g:ctrlp_by_filename         = 1
+let g:ctrlp_working_path_mode   = 'raw'
+let g:ctrlp_root_markers        = ['src', 'node_modules', 'projects']
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_max_files           = 0
+let g:ctrlp_max_depth           = 40
+let g:ctrlp_open_new_file       = 'r'
+let g:ctrlp_show_hidden         = 1
+
 " # Grammarous
+" #############################################################################
+" ## Configuration
 
 let g:grammarous#languagetool_cmd='/usr/bin/languagetool -m es'
 
-" # Vim Session
-" ## Configuration
-let g:session_persist_colors = 0
-let g:session_autosave       = "yes"
-
 " # Vim Schlepp
+" #############################################################################
 " ## Mappings
 vmap <unique> <C-k> <Plug>SchleppUp
 vmap <unique> <C-j> <Plug>SchleppDown
@@ -109,41 +131,130 @@ vmap <unique> <C-h> <Plug>SchleppLeft
 vmap <unique> <C-l> <Plug>SchleppRight
 vmap <unique> <C-d> <Plug>SchleppDup
 
-" # Personal Configuration
-" ## Options
-set list listchars =tab:\¦›
-set formatoptions  =torcj
-set viminfo        ='10,<50,s10,h,n~/.vim/viminfo
-set textwidth      =80
-set foldmethod     =syntax
-set wildignore    +=node_modules/,vendor/,__pycache__/,venv/,.git/
-set re             =0
+" # EditorConfig
+" ## Configuration
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+" # Airline
+" #############################################################################
+" ## Configuration
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme='base16_adwaita'
+
+let g:airline#extensions#ale#enabled = 1
+
+let g:airline#extensions#branch#displayed_head_limit = 15
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#show_tab_count = 1
+" let g:airline#extensions#tabline#excludes = []
+
+" # ALE
+" #############################################################################
+" ## Configuration
+"
+
+let g:ale_completion_enable = 1
+let g:ale_linters_ignore = {'python': ['ruff']}
+
+let g:ale_python_auto_pipenv = 1
+let g:ale_python_pylint_auto_pipenv = 1
+
+" ## Mappings
+nnoremap <silent> <leader>gd :ALEGoToDefinition<CR>
+
+" # Vim Markdown
+" #############################################################################
+" ## Configuration
+"
+let g:vim_markdown_folding_level = 1
+
+" # Personal Configuration
+" #############################################################################
+" ## Options
+colorscheme slate
+
+set foldlevelstart =1
+set foldmethod     =syntax
+set foldnestmax    =3
+set formatoptions  =torcj
+set list listchars =tab:\¦›
+set omnifunc       =ale#completion#OmniFunc
+set re             =0
+set spelllang      =en_us
+set termwinsize    =15*0
+set textwidth      =80
+set viminfo        ='10,<50,s10,h,n~/.vim/viminfo
+
+set cursorcolumn
+set cursorline
 set hidden
 set hlsearch
-
-set spelllang=en_us
+set noerrorbells
 set number
-set cursorline
-set cursorcolumn
+set vb t_vb=
 
+" ## Tabs
 set shiftwidth  =4
 set softtabstop =4
 set tabstop     =4
 set noexpandtab
 
-let mapleader    = ","
+" ## Wildignore
+set wildignore +=*/.git,*/.svn,*/.hg
+set wildignore +=*/node_modules,*/vendor
+set wildignore +=*/build,*/www,*/dist
+set wildignore +=*/__pycache__,*/venv
+set wildignore +=*/.angular,*/coverage,
+
+" ## Others
 let &colorcolumn = "80,".join(range(110, 999), ",")
+
 " ## Autocommands
-autocmd ColorScheme * highlight ColorColumn ctermbg=235 guibg=#2c2d27
+augroup ColorAG
+	autocmd!
+	autocmd ColorScheme * highlight ColorColumn ctermbg=235 guibg=#2c2d27
+augroup end
 
 " ## Mappings
 " ### Refresh without higlights
-imap <silent> <C-L> <ESC>:nohlsearch<CR>a
-nmap <silent> <C-L> :nohlsearch<CR>
+inoremap <silent> <C-L> <ESC>:nohlsearch<CR>a
+nnoremap <silent> <C-L> :nohlsearch<CR>
 
-" ### Open terminal emulator
-map <silent> <Leader>t :terminal<CR>
+" ### Toggle terminal emulator
+" map <silent> <Leader>t :botright terminal<CR>
+nnoremap <silent> <leader>t :call ToggleTerminal()<CR>
+
+augroup TerminalAG
+	autocmd!
+
+	autocmd BufEnter,BufLeave *
+		\ if &buftype == 'terminal' |
+			\ resize 15 |
+		\ endif
+
+	autocmd TerminalOpen * call SetTerminalSettings()
+augroup end
+
+function! ToggleTerminal()
+	let terminal_buffer = bufnr('!\/bin\/bash')
+	if terminal_buffer != -1
+		let terminal_window = bufwinnr(terminal_buffer)
+		if terminal_window != -1
+			exec terminal_window 'hide'
+		else
+			exec 'botright sbuffer' terminal_buffer
+		endif
+	else
+		botright terminal
+	endif
+endfunction
+
+function! SetTerminalSettings()
+	setlocal nonumber
+endfunction
 
 " ### Delete current line
 imap <C-K> <ESC>ddi
