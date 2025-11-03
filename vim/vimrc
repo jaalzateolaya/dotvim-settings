@@ -18,8 +18,8 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'dantleech/vim-phpstan', { 'for': 'php' }
 Plug 'jaalzateolaya/vim-markdown', { 'for': 'markdown' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'javascriptreact'] }
-Plug 'posva/vim-vue', { 'for': 'vuejs' }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'javascriptreact', 'vue'] }
+Plug 'posva/vim-vue', { 'for': ['vuejs', 'vue'] }
 
 " ## Misc plugins
 Plug 'SirVer/ultisnips'
@@ -207,7 +207,8 @@ set wildignore +=*/.git,*/.svn,*/.hg
 set wildignore +=*/node_modules,*/vendor
 set wildignore +=*/build,*/www,*/dist
 set wildignore +=*/__pycache__,*/venv
-set wildignore +=*/.angular,*/coverage,
+set wildignore +=*/.angular,*/coverage
+set wildignore +=*/data/cache,*/test_data,*/prof
 
 " ## Others
 let &colorcolumn = "80,".join(range(110, 999), ",")
