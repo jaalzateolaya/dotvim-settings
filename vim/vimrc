@@ -44,6 +44,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'zirrostig/vim-schlepp'
+Plug 'zivyangll/git-blame.vim'
 
 " Plug 'bewakes/vim-rest-client'
 
@@ -170,6 +171,13 @@ nnoremap <silent> <leader>gd :ALEGoToDefinition<CR>
 " ## Configuration
 "
 let g:vim_markdown_folding_level = 1
+
+" # git-blame.vim
+" #############################################################################
+
+" ## Mappings
+
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 " # Personal Configuration
 " #############################################################################
